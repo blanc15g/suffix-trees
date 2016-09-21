@@ -207,7 +207,9 @@ class STree():
             if edge.startswith(y):
                 return node.idx
             i = 0
-            while(i < len(edge) and edge[i] == y[0]):
+            while i < len(edge):
+                if edge[i] != y[0]:
+                    return -1
                 y = y[1:]
                 i += 1
             node = node._get_transition_link(y[0])
@@ -223,7 +225,9 @@ class STree():
                 break
             else:
                 i = 0
-                while(i < len(edge) and edge[i] == y[0]):
+                while i < len(edge):
+                    if edge[i] != y[0]:
+                        return []
                     y = y[1:]
                     i += 1
             node = node._get_transition_link(y[0])
